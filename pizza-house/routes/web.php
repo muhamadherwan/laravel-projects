@@ -17,27 +17,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pizzas', function () {
+// pizza routes
+use App\Http\Controllers\PizzaController;
+Route::get('/pizzas', [PizzaController::class, 'index']);
+Route::get('/pizzas/{id}', [PizzaController::class, 'show']);
 
-    // get data from db
-    $pizzas = [
-        ['type' => 'hawaiian', 'base' => 'cheesy crust', 'price' => '29'],
-        ['type' => 'valcano', 'base' => 'garlic crust', 'price' => '29'],
-        ['type' => 'vegie', 'base' => 'thin & crispy', 'price' => '29'],
-    ];
 
-    // get data from query string url
-    $name = request('name');
-    $car = request('car');
+// Route::get('/pizzas', 'PizzaController@index');
+// Route::get('/pizzas/{id}', 'PizzaController@show');
 
-    return view('pizzas', [
-        'pizzas' => $pizzas,
-        'name' => $name,
-        'car' => $car 
-        ]);
-});
+// Route::get('/pizzas', function () {
 
-// route parameter (wildcard)
-Route::get('/pizzas/{id}', function ($id) {
-    return view('details',['id' => $id]);
-});
+// // get data from db
+// $pizzas = [
+// ['type' => 'hawaiian', 'base' => 'cheesy crust', 'price' => '29'],
+// ['type' => 'valcano', 'base' => 'garlic crust', 'price' => '29'],
+// ['type' => 'vegie', 'base' => 'thin & crispy', 'price' => '29'],
+// ];
+
+// // get data from query string url
+// $name = request('name');
+// $car = request('car');
+
+// return view('pizzas', [
+// 'pizzas' => $pizzas,
+// 'name' => $name,
+// 'car' => $car 
+// ]);
+// });
+
+// // route parameter (wildcard)
+// Route::get('/pizzas/{id}', function ($id) {
+//     return view('details',['id' => $id]);
+// });
