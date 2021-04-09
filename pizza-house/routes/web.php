@@ -18,11 +18,26 @@ Route::get('/', function () {
 });
 
 Route::get('/pizzas', function () {
+
     // get data from db
     $pizzas = [
         ['type' => 'hawaiian', 'base' => 'cheesy crust', 'price' => '29'],
         ['type' => 'valcano', 'base' => 'garlic crust', 'price' => '29'],
         ['type' => 'vegie', 'base' => 'thin & crispy', 'price' => '29'],
     ];
-    return view('pizzas', ['pizzas' => $pizzas]);
+
+    // get data from query string url
+    $name = request('name');
+    $car = request('car');
+
+    return view('pizzas', [
+        'pizzas' => $pizzas,
+        'name' => $name,
+        'car' => $car 
+        ]);
+});
+
+// route parameter (wildcard)
+Route::get('/pizzas/{id}', function ($id) {
+    return view('details',['id' => $id]);
 });

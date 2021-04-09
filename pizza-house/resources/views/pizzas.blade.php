@@ -5,7 +5,8 @@
     <div class="content">
     <div class="title m-b-md">Pizza List</div>
     
-
+    <p>Pizza Name: {{ $name}}</p>
+    <p>Car: {{ $car }}</p>
     @foreach($pizzas as $pizza)
     <div>
     {{ $loop->index }} {{ $pizza['type']}} - {{ $pizza['base']}}
