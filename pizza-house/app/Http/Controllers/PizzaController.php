@@ -7,6 +7,11 @@ use App\Models\Pizza;
 
 class PizzaController extends Controller
 {
+    // need login to access all this action
+    // public function __construct(){
+    //     $this->middleware('auth');
+    // }
+
     public function index() {
         // get data from db
         //$pizzas = Pizza::all();
