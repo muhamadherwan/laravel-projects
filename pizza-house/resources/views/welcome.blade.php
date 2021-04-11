@@ -23,7 +23,8 @@
             Cyberjaya Best Pizzas
         </div>
         <p class="mssg">{{session('mssg')}}</p>
-        <a href="{{ route('pizzas.create')}}">Order a New Pizza.</a>
+        <a href="{{ route('pizzas.create')}}">Order a New Pizza.</a><br>
+        <a href="{{ route('kebabs.create')}}">Order a New Kebab.</a>
     </div>
 </div>
 @endsection

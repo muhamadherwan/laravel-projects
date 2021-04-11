@@ -26,7 +26,11 @@ Route::post('/pizzas', [PizzaController::class, 'store'])->name('pizzas.store');
 Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->name('pizzas.show')->middleware('auth');
 Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('pizzas.destroy')->middleware('auth');
 
-
+Route::get('/kebabs', [KebabController::class, 'index'])->name('kebabs.index')->middleware('auth');
+Route::get('/kebabs/create', [KebabController::class, 'create'])->name('kebabs.create');
+Route::get('/kebabs', [KebabController::class, 'store'])->name('kebabs.store');
+Route::get('/kebabs/{id}', [KebabController::class, 'show'])->name('kebabs.show')->middleware('auth');
+Route::get('/kebabs/{id}', [KebabController::class, 'destroy'])->name('kebabs.destroy')->middleware('auth');
 
 // Route::get('/pizzas', 'PizzaController@index');
 // Route::get('/pizzas/{id}', 'PizzaController@show');
