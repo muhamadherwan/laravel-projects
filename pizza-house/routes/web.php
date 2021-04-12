@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PizzaController;
 
+use App\Http\Controllers\KebabController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,7 @@ Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('pizzas
 
 Route::get('/kebabs', [KebabController::class, 'index'])->name('kebabs.index')->middleware('auth');
 Route::get('/kebabs/create', [KebabController::class, 'create'])->name('kebabs.create');
-Route::get('/kebabs', [KebabController::class, 'store'])->name('kebabs.store');
+Route::post('/kebabs', [KebabController::class, 'store'])->name('kebabs.store');
 Route::get('/kebabs/{id}', [KebabController::class, 'show'])->name('kebabs.show')->middleware('auth');
 Route::get('/kebabs/{id}', [KebabController::class, 'destroy'])->name('kebabs.destroy')->middleware('auth');
 
