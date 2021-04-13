@@ -19,4 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pizzas',PizzaController::class);
+//Route::resource('pizzas',PizzaController::class);
+
+Route::get('/pizzas', [PizzaController::class, 'index'])->name('pizzas.index')->middleware('auth');
+Route::get('/pizzas/create', [PizzaController::class, 'create'])->name('pizzas.create');
+Route::post('/pizzas', [PizzaController::class, 'store'])->name('pizzas.store');
+Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->name('pizzas.show')->middleware('auth');
+Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->name('pizzas.destroy')->middleware('auth');
+
+//Auth::routes();
+
+// disable register
+Auth::routes([
+    'register' => false
+]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
