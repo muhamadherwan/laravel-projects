@@ -15,7 +15,7 @@ class DashboardController extends Controller
         //dd(auth()->user());
         //dd(auth()->user()->name);
 
-        dd(auth()->user()->posts);
+        //dd(auth()->user()->posts);
 
         return view('dashboard');
     }
