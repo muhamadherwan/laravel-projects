@@ -13,11 +13,12 @@ class Post extends Model
         'body',
     ];
 
-    // check user already like or not a post
-    public function likedBy(User $user)
-    {
-        return $this->likes->contains('user_id', $user->id);
-    }
+
+        public function likedBy(User $user)
+        {
+            return $this->likes->contains('user_id', $user->id);
+        }
+
     
     // // check if post is owned by user
     // public function ownedBy(User $user)
