@@ -37,4 +37,13 @@ class PostController extends Controller
 
         // redirect
     }
+
+    // delete user post
+    public function destroy(Post $post)
+    {
+        //dd($post);
+        $post->delete();
+        return back();
+        
+    }
 }
