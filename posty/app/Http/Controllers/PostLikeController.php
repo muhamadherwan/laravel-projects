@@ -27,9 +27,14 @@ class PostLikeController extends Controller
         ]);
 
         // send email to post owner when post were like
-        $user = auth()->user();
+        //$user = auth()->user();
 
-        Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+        // only send email if post never been liked
+        if (!$post->likes()->onlyTrashed()->where('user_id', $request->user()->id)->count()) {
+            Mail::to($post->user)->send(new PostLiked(auth()->user(), $post));
+        }    
+
+        
 
         return back();
     }
