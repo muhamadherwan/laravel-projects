@@ -44,7 +44,7 @@
                             
                             <td>
            
-                            <form action="" method="post">
+                            <form action="{{ route('students.destroy', $student->id) }}" method="post">
 
                                 <a href="" class="btn btn-primary">Show</a>
 
