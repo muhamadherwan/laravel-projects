@@ -91,7 +91,15 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $request->validate([
+            'name' => 'required',   
+            'course' => 'required',
+            'fee' => 'required',
+        ]);
+
+        $student->update($request->all());
+
+        return redirect()->route('students.index')->with('success', 'Data updated!');
     }
 
     /**

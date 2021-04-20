@@ -46,9 +46,9 @@
            
                             <form action="{{ route('students.destroy', $student->id) }}" method="post">
 
-                                <a href="" class="btn btn-primary">Show</a>
+                                <a href="{{ route('students.show', $student->id) }}" class="btn btn-primary">Show</a>
 
-                                <a href="" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary">Edit</a>
 
                                 @csrf
                                 @method('DELETE')
