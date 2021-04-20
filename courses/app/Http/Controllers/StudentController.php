@@ -14,7 +14,19 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        //$students = Student::latest()->paginate(5)
+        // return view('students.index', compact('students'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 5);
+        
+        // $pizzas = Pizza::latest()->get( );
+        // return view('pizzas.index', [
+        //     'pizzas' => $pizzas,
+        // ]);
+
+        $students = Student::latest()->paginate(3);
+        return view('students.index', compact('students'))
+        ->with('i', (request()->input('page', 1) - 1) * 3);
+       
     }
 
     /**
@@ -46,7 +58,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return view('students.show', compact('student'));
+        
     }
 
     /**
@@ -80,6 +93,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+
+        return redirect()->route('students.index')->with('success','Student data has been deleted');
     }
 }
