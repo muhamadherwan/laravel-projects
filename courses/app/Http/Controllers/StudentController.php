@@ -36,7 +36,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+       
+        return view('students.create');
     }
 
     /**
@@ -47,7 +48,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',   
+            'course' => 'required',
+            'fee' => 'required',
+        ]);
+
+        Student::create($request->all());
+
+        return redirect()->route('students.index')->with('success', 'New data created!');
     }
 
     /**
@@ -70,7 +79,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('students.edit', compact('student'));
     }
 
     /**
